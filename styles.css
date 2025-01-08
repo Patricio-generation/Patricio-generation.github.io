@@ -21,10 +21,9 @@ body {
     gap: 20px;
     padding: 20px;
     margin: 0 auto; /* Centra el contenedor */
-    width: 80%;
+    width: 100%; /* Ajuste dinámico para que ocupe el 100% */
     max-width: 1200px;
 }
-
 /* Contenido de la sección izquierda */
 .izquierda {
     display: flex;
@@ -210,38 +209,37 @@ h2 {
 /* Para móviles: Adaptar el diseño a una sola columna y asegurarse de que todo esté centrado */
 /* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
-    /* Usamos flexbox para alinear todos los elementos en una sola columna */
     .contenedor {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centra todo en el eje horizontal */
-        padding: 20px;
+        align-items: center; /* Centra todo el contenido horizontalmente */
+        padding: 10px;
+        width: 100%;
     }
 
-    /* La tarjeta de la imagen ahora será más flexible */
     .contenedor-imagen {
-        position: relative; /* Vuelve a relativa */
+        position: relative; /* Cambiado de fixed a relative */
         width: 100%;
         height: auto;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px; /* Se agrega margen para separación */
     }
 
-    /* Aseguramos que las imágenes se ajusten a la pantalla */
     .imagen, .imagen2 {
-        width: 100%; /* Ocupan todo el ancho disponible */
+        width: 100%; /* Las imágenes ocuparán todo el ancho disponible */
         height: auto;
-        object-fit: cover; /* Ajusta bien las imágenes sin distorsionarlas */
+        object-fit: cover;
     }
 
-    /* Ajuste del contenido */
     .contenido {
-        position: relative;
-        top: 0; /* Reseteamos top para evitar desplazamiento */
-        left: 50%;
-        transform: translateX(-50%); /* Centra el contenido */
-        width: 90%; /* Aseguramos que no sobresalga */
-        text-align: center;
+        width: 90%; /* Contenido adaptado al tamaño de la pantalla */
         padding: 20px;
         background: rgba(0, 0, 0, 0.5);
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        margin: 0 auto;
     }
 }
