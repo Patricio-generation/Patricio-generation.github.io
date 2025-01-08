@@ -16,11 +16,13 @@ body {
 
 /* Estructura general del contenedor con dos columnas */
 .contenedor {
-    display: grid; /* Utilizamos Grid Layout para dividir en columnas */
-    grid-template-columns: 1fr 400px; /* La izquierda ocupa el 1fr (espacio restante) y la derecha tiene un tamaño fijo de 400px */
-    gap: 20px; /* Espacio entre las columnas */
+    display: grid;
+    grid-template-columns: 1fr 400px; /* Una columna flexible y otra para la tarjeta */
+    gap: 20px;
     padding: 20px;
-    margin-right: 420px; /* Esto asegura que haya espacio suficiente para la tarjeta fija */
+    margin: 0 auto; /* Esto lo centra en el eje horizontal */
+    width: 80%; /* Opcional: te aseguro que se acomode bien */
+    max-width: 1200px; /* Limitar el tamaño máximo del contenedor */
 }
 
 /* Contenido de la sección izquierda */
@@ -208,28 +210,30 @@ h2 {
 /* Para móviles: Adaptar el diseño a una sola columna y asegurarse de que todo esté centrado */
 @media (max-width: 768px) {
     .contenedor {
-        grid-template-columns: 1fr; /* Coloca todo en una sola columna */
+        grid-template-columns: 1fr; /* Hace que todo se vea como una columna */
         padding: 20px 10px;
-        margin-right: 0;
+        margin: 0 auto; /* Centra todo en el eje horizontal */
     }
 
     .contenedor-imagen {
-        position: relative; /* Para que ocupe todo el ancho sin ser fijo */
-        width: 100%; /* Usa todo el ancho disponible */
-        height: auto; /* Ajuste de altura para evitar recortes */
+        position: relative; /* Usa un tamaño fluido en vez de fijar el posicionamiento */
+        width: 100%; /* Asegura que la tarjeta ocupe todo el ancho */
+        height: auto; /* Ajuste dinámico */
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* Alineación de la imagen dentro de la tarjeta para móviles */
+    /* Asegura que la imagen secundaria se acomode */
     .imagen2 {
-        width: 100%;  /* Ajusta la imagen a la tarjeta */
+        width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
         height: auto;
     }
     
-    /* Ajusta el texto dentro de la tarjeta para asegurarse que no quede pegado */
+    /* Contenido dentro de la tarjeta (hacia el centro de la pantalla) */
     .contenido {
-        top: 50%; /* Centra el contenido verticalmente */
-        transform: translateY(-50%); /* Lo ajusta para que quede más centrado */
-        width: 90%; /* Reduce el ancho para no sobrepasar los bordes */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centra el contenido */
+        width: 90%; /* No dejes que el contenido sobresalga del borde */
+        text-align: center; /* Centra el texto horizontalmente */
     }
 }
