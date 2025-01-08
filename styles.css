@@ -201,3 +201,30 @@ h2 {
         padding: 15px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .logo {
+        height: 40px; /* Ajusta la altura de los logos a un tamaño más pequeño */
+        margin: 5px; /* Separa un poco los logos entre sí */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor-imagen {
+        position: relative; /* Cambiar la posición */
+        width: 100%; /* Ocupa todo el ancho disponible */
+        height: auto; /* Se ajusta de acuerdo al contenido */
+    }
+
+    .contenido {
+        padding: 15px; /* Reducimos el padding */
+        width: 100%; /* Ocupa todo el espacio posible */
+        height: auto; /* Evita recortes */
+    }
+
+    .logo {
+        height: 40px; /* Reducimos el tamaño de los logos */
+        margin: 10px; /* Agregamos algo de espacio entre ellos */
+    }
+}
+
