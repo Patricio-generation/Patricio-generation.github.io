@@ -121,10 +121,8 @@ h2 {
 }
 
 .logo {
-    height: 40px; /* Ajustamos el tamaño de los logos */
-    margin: 5px; /* Agregamos algo de espacio entre los logos */
-    
-
+    height: 10%;
+    max-width: 100%; /* Esto asegura que la imagen no se estire fuera de su contenedor */
 }
 
 /* Definimos la animación fade-in */
@@ -197,5 +195,12 @@ h2 {
     /* Ajuste general para títulos */
     h2 {
         font-size: 1.2rem; /* Reducimos el tamaño del texto en móviles */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        height: 5rem; /* Puedes ajustar el valor como desees para hacerlo más pequeño */
+        width: auto; /* Para que no se deforme el logo */
     }
 }
