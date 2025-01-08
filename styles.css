@@ -146,85 +146,57 @@ h2 {
     opacity: 0; /* Empieza invisible */
 }
 
-/* Sección de los estilos generales */
+/* Para pantallas grandes (escritorios o tabletas en modo apaisado) */
+.contenedor {
+    display: grid; /* Usamos grid por ahora para pantallas grandes */
+    grid-template-columns: 1fr 400px; /* La sección principal toma todo el espacio y la derecha tiene un tamaño fijo */
+    gap: 20px;
+    padding: 20px;
+    margin-right: 420px; /* Este valor se ajustará luego en móviles */
+}
+
+/* Para pantallas pequeñas (móviles) */
 @media screen and (max-width: 768px) {
+    /* Cambiamos a flexbox y apilamos los elementos */
     .contenedor {
-        display: block; /* Cambiamos el layout a bloque para pantallas pequeñas */
-        margin-right: 0; /* Quitamos el margen derecho para evitar corte en dispositivos pequeños */
+        display: flex;
+        flex-direction: column; /* Apilamos los elementos verticalmente */
     }
 
+    /* Contenedor de la imagen */
     .contenedor-imagen {
-        position: relative; /* Cambio de la posición para ajustarlo a dispositivos pequeños */
-        width: 100%; /* Hacemos que ocupe el 100% del ancho disponible */
-        height: auto; /* Ajustamos la altura automáticamente */
-        top: 0;
-        right: 0;
+        position: relative; /* Cambiamos la posición para que ocupe todo el ancho y esté arriba */
+        width: 100%; /* Que ocupe todo el ancho en pantallas pequeñas */
+        height: auto; /* La altura se ajustará para no romper la relación de aspecto */
+        margin-bottom: 20px; /* Un poco de margen inferior */
     }
 
-    .imagen, .imagen2 {
-        width: 100%; /* Hacemos que las imágenes ocupen el ancho completo de la tarjeta */
-        height: auto; /* Ajustamos la altura automáticamente */
-    }
-
+    /* Ajustamos la tarjeta de presentación (contenido) */
     .contenido {
-        position: relative; /* Cambiamos la posición */
-        width: 100%; /* Hacemos que ocupe el ancho completo disponible */
-        height: auto; /* Ajustamos la altura para que no se corte */
-        padding: 10px; /* Aumentamos el padding para que el contenido no toque los bordes */
+        width: 100%; /* El contenido ocupará el 100% del espacio disponible */
+        height: auto; /* La altura debe ajustarse de acuerdo al contenido */
+        padding: 15px; /* Reducimos el padding para el diseño móvil */
     }
 
-    h2, h3 {
-        font-size: 1.5rem; /* Hacemos que los títulos se reduzcan de tamaño en pantallas pequeñas */
-    }
-
+    /* La imagen de los logos y el texto no deben verse demasiado grandes */
     .logo {
-        height: 40%; /* Ajustamos el tamaño de los logos */
-        margin: 10px; /* Agregamos algo de separación entre los logos */
+        height: 40px; /* Ajustamos el tamaño de los logos */
+        margin: 5px; /* Agregamos algo de espacio entre los logos */
     }
 
-    .fade-in {
-        animation-duration: 2s; /* Alargamos la duración de la animación en pantallas pequeñas */
-    }
-}
-
-/* Para pantallas muy pequeñas (móviles en retrato) */
-@media screen and (max-width: 480px) {
-    h2, h3 {
-        font-size: 1.2rem; /* Reducimos el tamaño de los títulos aún más */
+    .izquierda {
+        /* Ajustar contenido para que tenga un buen margen en móviles */
+        gap: 15px;
     }
 
-    .contenedor-imagen {
-        height: 250px; /* Reducimos la altura de la sección de la tarjeta de imagen */
-    }
-
-    .contenido {
+    /* Ajustamos las secciones dentro de izquierda */
+    .proyectos, .habilidades, .contacto {
         padding: 15px;
+        background: rgba(0, 0, 0, 0.6); /* Fondo más claro para el contraste */
+    }
+
+    /* Ajuste general para títulos */
+    h2 {
+        font-size: 1.2rem; /* Reducimos el tamaño del texto en móviles */
     }
 }
-
-@media screen and (max-width: 768px) {
-    .logo {
-        height: 40px; /* Ajusta la altura de los logos a un tamaño más pequeño */
-        margin: 5px; /* Separa un poco los logos entre sí */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .contenedor-imagen {
-        position: relative; /* Cambiar la posición */
-        width: 100%; /* Ocupa todo el ancho disponible */
-        height: auto; /* Se ajusta de acuerdo al contenido */
-    }
-
-    .contenido {
-        padding: 15px; /* Reducimos el padding */
-        width: 100%; /* Ocupa todo el espacio posible */
-        height: auto; /* Evita recortes */
-    }
-
-    .logo {
-        height: 40px; /* Reducimos el tamaño de los logos */
-        margin: 10px; /* Agregamos algo de espacio entre ellos */
-    }
-}
-
