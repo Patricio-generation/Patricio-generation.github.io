@@ -121,7 +121,10 @@ h2 {
 }
 
 .logo {
-    height: 10%;
+    height: 40px; /* Ajustamos el tamaño de los logos */
+    margin: 5px; /* Agregamos algo de espacio entre los logos */
+    
+
 }
 
 /* Definimos la animación fade-in */
@@ -179,10 +182,6 @@ h2 {
     }
 
     /* La imagen de los logos y el texto no deben verse demasiado grandes */
-    .logo {
-        height: 40px; /* Ajustamos el tamaño de los logos */
-        margin: 5px; /* Agregamos algo de espacio entre los logos */
-    }
 
     .izquierda {
         /* Ajustar contenido para que tenga un buen margen en móviles */
