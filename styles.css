@@ -11,6 +11,7 @@ body {
     color: #ffffff; /* Color de texto blanco para contraste */
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Esto elimina los desbordes horizontales en móviles */
 }
 
 /* Estructura general del contenedor con dos columnas */
@@ -137,9 +138,66 @@ h2 {
 .fade-in {
     animation: fade-in 1.5s ease-in-out forwards; /* Añadimos forwards para mantener el último estado */
     opacity: 0; /* Asegura que empiece invisible */
+    animation-duration: 1.5s; /* Puedes incrementar o reducir el tiempo dependiendo del efecto que quieras */
 }
 
 /* Elementos iniciales invisibles */
 .hidden {
     opacity: 0; /* Empieza invisible */
+}
+
+/* Sección de los estilos generales */
+@media screen and (max-width: 768px) {
+    .contenedor {
+        display: block; /* Cambiamos el layout a bloque para pantallas pequeñas */
+        margin-right: 0; /* Quitamos el margen derecho para evitar corte en dispositivos pequeños */
+    }
+
+    .contenedor-imagen {
+        position: relative; /* Cambio de la posición para ajustarlo a dispositivos pequeños */
+        width: 100%; /* Hacemos que ocupe el 100% del ancho disponible */
+        height: auto; /* Ajustamos la altura automáticamente */
+        top: 0;
+        right: 0;
+    }
+
+    .imagen, .imagen2 {
+        width: 100%; /* Hacemos que las imágenes ocupen el ancho completo de la tarjeta */
+        height: auto; /* Ajustamos la altura automáticamente */
+    }
+
+    .contenido {
+        position: relative; /* Cambiamos la posición */
+        width: 100%; /* Hacemos que ocupe el ancho completo disponible */
+        height: auto; /* Ajustamos la altura para que no se corte */
+        padding: 10px; /* Aumentamos el padding para que el contenido no toque los bordes */
+    }
+
+    h2, h3 {
+        font-size: 1.5rem; /* Hacemos que los títulos se reduzcan de tamaño en pantallas pequeñas */
+    }
+
+    .logo {
+        height: 40%; /* Ajustamos el tamaño de los logos */
+        margin: 10px; /* Agregamos algo de separación entre los logos */
+    }
+
+    .fade-in {
+        animation-duration: 2s; /* Alargamos la duración de la animación en pantallas pequeñas */
+    }
+}
+
+/* Para pantallas muy pequeñas (móviles en retrato) */
+@media screen and (max-width: 480px) {
+    h2, h3 {
+        font-size: 1.2rem; /* Reducimos el tamaño de los títulos aún más */
+    }
+
+    .contenedor-imagen {
+        height: 250px; /* Reducimos la altura de la sección de la tarjeta de imagen */
+    }
+
+    .contenido {
+        padding: 15px;
+    }
 }
