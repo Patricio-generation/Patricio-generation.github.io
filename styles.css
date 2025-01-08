@@ -17,12 +17,12 @@ body {
 /* Estructura general del contenedor con dos columnas */
 .contenedor {
     display: grid;
-    grid-template-columns: 1fr 400px; /* Una columna flexible y otra para la tarjeta */
+    grid-template-columns: 1fr 400px; /* Configura el layout de columnas */
     gap: 20px;
     padding: 20px;
-    margin: 0 auto; /* Esto lo centra en el eje horizontal */
-    width: 80%; /* Opcional: te aseguro que se acomode bien */
-    max-width: 1200px; /* Limitar el tamaño máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor */
+    width: 80%;
+    max-width: 1200px;
 }
 
 /* Contenido de la sección izquierda */
@@ -208,32 +208,40 @@ h2 {
 }
 
 /* Para móviles: Adaptar el diseño a una sola columna y asegurarse de que todo esté centrado */
+/* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
+    /* Usamos flexbox para alinear todos los elementos en una sola columna */
     .contenedor {
-        grid-template-columns: 1fr; /* Hace que todo se vea como una columna */
-        padding: 20px 10px;
-        margin: 0 auto; /* Centra todo en el eje horizontal */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra todo en el eje horizontal */
+        padding: 20px;
     }
 
+    /* La tarjeta de la imagen ahora será más flexible */
     .contenedor-imagen {
-        position: relative; /* Usa un tamaño fluido en vez de fijar el posicionamiento */
-        width: 100%; /* Asegura que la tarjeta ocupe todo el ancho */
-        height: auto; /* Ajuste dinámico */
+        position: relative; /* Vuelve a relativa */
+        width: 100%;
+        height: auto;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* Asegura que la imagen secundaria se acomode */
-    .imagen2 {
-        width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+    /* Aseguramos que las imágenes se ajusten a la pantalla */
+    .imagen, .imagen2 {
+        width: 100%; /* Ocupan todo el ancho disponible */
         height: auto;
+        object-fit: cover; /* Ajusta bien las imágenes sin distorsionarlas */
     }
-    
-    /* Contenido dentro de la tarjeta (hacia el centro de la pantalla) */
+
+    /* Ajuste del contenido */
     .contenido {
-        top: 50%;
+        position: relative;
+        top: 0; /* Reseteamos top para evitar desplazamiento */
         left: 50%;
-        transform: translate(-50%, -50%); /* Centra el contenido */
-        width: 90%; /* No dejes que el contenido sobresalga del borde */
-        text-align: center; /* Centra el texto horizontalmente */
+        transform: translateX(-50%); /* Centra el contenido */
+        width: 90%; /* Aseguramos que no sobresalga */
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.5);
     }
 }
