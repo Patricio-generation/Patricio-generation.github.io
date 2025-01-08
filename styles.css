@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'taxon'; /* Nombre que le darás a la fuente */
+    src: url('font/taxon-s.ttf') format('truetype');  /* Archivo de la fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'taxon', sans-serif; /* Usa la fuente personalizada */
+    background-color: #000000; /* Color de fondo negro */
+    color: #ffffff; /* Color de texto blanco para contraste */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estructura general del contenedor con dos columnas */
+.contenedor {
+    display: grid; /* Utilizamos Grid Layout para dividir en columnas */
+    grid-template-columns: 1fr 400px; /* La izquierda ocupa el 1fr (espacio restante) y la derecha tiene un tamaño fijo de 400px */
+    gap: 20px; /* Espacio entre las columnas */
+    padding: 20px;
+    margin-right: 420px; /* Esto asegura que haya espacio suficiente para la tarjeta fija */
+}
+
+/* Contenido de la sección izquierda */
+.izquierda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Sección de proyectos */
+.proyectos, .habilidades, .contacto {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #ff1744; /* Color neón para los títulos */
+}
+
+/* Tarjeta en la parte derecha (ahora fija) */
+.contenedor-imagen {
+    position: fixed; /* La hace fija en la pantalla */
+    top: 0; /* Queda pegada al borde superior de la ventana */
+    right: 0; /* Queda pegada al borde derecho */
+    width: 400px; /* La tarjeta ocupará 400px de ancho */
+    height: 100vh; /* La tarjeta ocupará toda la altura de la pantalla */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5); /* Sombra para resaltar la tarjeta */
+    overflow: visible; /* Evita que el contenido sobrepase la tarjeta */
+}
+
+/* Imagen con filtro */
+.imagen {
+
+    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    filter: blur(10px) sepia(1) saturate(1000%) hue-rotate(150deg);
+
+}
+
+/* Imagen secundaria encima de la primera */
+.imagen2 {
+    position: absolute;
+    width: 130%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    z-index: 0;
+    right: -7.55%;
+    filter: drop-shadow(20px 20px 50px black); /* Borde negro simulado */
+
+}
+
+/* Contenido de la tarjeta */
+.contenido {
+    text-align: left;
+    position: absolute;
+    top: 70%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    height: 90%;
+    width: 125%;
+    background: linear-gradient(to top, rgba(151, 149, 149, 0.8), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+}
+
+h2 {
+    color: white;
+    text-shadow: 
+      2px 2px 0 black, 
+      -2px -2px 0 black, 
+      2px -2px 0 black, 
+      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
+}
+
+.cursivo {
+    font-style:italic;
+    color: white;
+    text-shadow: 
+      2px 2px 0 black, 
+      -2px -2px 0 black, 
+      2px -2px 0 black, 
+      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
+}
+
+.cursivo-2 {
+    color: rgb(152, 153, 78);
+    text-shadow: 
+      2px 2px 0 black, 
+      -2px -2px 0 black, 
+      2px -2px 0 black, 
+      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
+}
+
+.logo {
+    height: 10%;
+}
+
+/* Definimos la animación fade-in */
+@keyframes fade-in {
+    from {
+        opacity: 0; /* Inicio con opacidad 0 (invisible) */
+    }
+    to {
+        opacity: 1; /* Final con opacidad 1 (visible) */
+    }
+}
+
+/* Clase que aplicará la animación */
+.fade-in {
+    animation: fade-in 1.5s ease-in-out forwards; /* Añadimos forwards para mantener el último estado */
+    opacity: 0; /* Asegura que empiece invisible */
+}
+
+/* Elementos iniciales invisibles */
+.hidden {
+    opacity: 0; /* Empieza invisible */
+}
