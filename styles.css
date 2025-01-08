@@ -204,3 +204,32 @@ h2 {
         width: auto; /* Para que no se deforme el logo */
     }
 }
+
+/* Para móviles: Adaptar el diseño a una sola columna y asegurarse de que todo esté centrado */
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr; /* Coloca todo en una sola columna */
+        padding: 20px 10px;
+        margin-right: 0;
+    }
+
+    .contenedor-imagen {
+        position: relative; /* Para que ocupe todo el ancho sin ser fijo */
+        width: 100%; /* Usa todo el ancho disponible */
+        height: auto; /* Ajuste de altura para evitar recortes */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Alineación de la imagen dentro de la tarjeta para móviles */
+    .imagen2 {
+        width: 100%;  /* Ajusta la imagen a la tarjeta */
+        height: auto;
+    }
+    
+    /* Ajusta el texto dentro de la tarjeta para asegurarse que no quede pegado */
+    .contenido {
+        top: 50%; /* Centra el contenido verticalmente */
+        transform: translateY(-50%); /* Lo ajusta para que quede más centrado */
+        width: 90%; /* Reduce el ancho para no sobrepasar los bordes */
+    }
+}
