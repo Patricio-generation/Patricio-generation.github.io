@@ -1,316 +1,54 @@
 @font-face {
-    font-family: 'taxon'; /* Nombre que le darás a la fuente */
-    src: url('font/taxon-s.ttf') format('truetype');  /* Archivo de la fuente */
+    font-family: 'ff7';
+    src: url('font/Reactor7.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-body {
-    font-family: 'taxon', sans-serif; /* Usa la fuente personalizada */
-    background-color: #000000; /* Color de fondo negro */
-    color: #ffffff; /* Color de texto blanco para contraste */
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Esto elimina los desbordes horizontales en móviles */
-}
-
-/* Estructura general del contenedor con dos columnas */
-.contenedor {
+.parent {
     display: grid;
-    grid-template-columns: 1fr 400px; /* Configura el layout de columnas */
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.34fr 1.2fr 0.3fr repeat(2, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    height: 100vh; /* Toma el tamaño completo del contenedor */
+    width: 100%; /* Ajusta al ancho total */
+    box-sizing: border-box;
+    }
+    
+    .div1 { grid-area: 1 / 5 / 2 / 6; }
+    .div2 { grid-area: 2 / 5 / 3 / 6; }
+    .div3 { grid-area: 1 / 1 / 3 / 5; }
+    .div4 { grid-area: 3 / 1 / 4 / 6; }
+    .div5 { grid-area: 4 / 1 / 6 / 6; }
+
+
+.div1, .div2, .div3, .div4, .div5 {
+    background: linear-gradient(to bottom, #0000A6, #000133); /* Degradado */
+    font-family: 'ff7', sans-serif;
+}
+
+.metal-border {
+    position: relative;
     padding: 20px;
-    margin: 0 auto; /* Centra el contenedor */
-    width: 100%; /* Ajuste dinámico para que ocupe el 100% */
-    max-width: 1200px;
-}
-/* Contenido de la sección izquierda */
-.izquierda {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+    background-color: #1e2430; /* Fondo oscuro */
+    text-align: left; /* Ajusta según tus necesidades */
 
-/* Sección de proyectos */
-.proyectos, .habilidades, .contacto {
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    /* Borde sólido metálico */
+    border: 5px solid #a8a9ad; /* Gris metálico */
+
+    /* Simulación de profundidad */
+    box-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8), /* Sombra oscura exterior */
+        inset -2px -2px 4px rgba(255, 255, 255, 0.2), /* Iluminación interna */
+        inset 2px 2px 6px rgba(0, 0, 0, 0.6); /* Sombra interna */
+
+    border-radius: 5px; /* Esquinas redondeadas */
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: #ff1744; /* Color neón para los títulos */
-}
+h1 {
+    text-shadow: 4px 0 6px rgba(0, 0, 0, 0.7);
+    transform: scaleY(1.4);
+    font-weight: 180;
 
-/* Tarjeta en la parte derecha (ahora fija) */
-.contenedor-imagen {
-    position: fixed; /* La hace fija en la pantalla */
-    top: 0; /* Queda pegada al borde superior de la ventana */
-    right: 0; /* Queda pegada al borde derecho */
-    width: 400px; /* La tarjeta ocupará 400px de ancho */
-    height: 100vh; /* La tarjeta ocupará toda la altura de la pantalla */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5); /* Sombra para resaltar la tarjeta */
-    overflow: visible; /* Evita que el contenido sobrepase la tarjeta */
-}
-
-/* Imagen con filtro */
-.imagen {
-
-    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
-    height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-    filter: blur(10px) sepia(1) saturate(1000%) hue-rotate(150deg);
-
-}
-
-/* Imagen secundaria encima de la primera */
-.imagen2 {
-    position: absolute;
-    width: 130%; /* Hace que la imagen ocupe todo el ancho del contenedor */
-    height: 100%; /* Hace que la imagen ocupe toda la altura del contenedor */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-    z-index: 0;
-    right: -7.55%;
-    filter: drop-shadow(20px 20px 50px black); /* Borde negro simulado */
-
-}
-
-/* Contenido de la tarjeta */
-.contenido {
-    text-align: left;
-    position: absolute;
-    top: 70%;
-    left: 33%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    height: 90%;
-    width: 125%;
-    background: linear-gradient(to top, rgba(151, 149, 149, 0.8), rgba(0, 0, 0, 0.2));
-    z-index: 1;
-}
-
-h2 {
-    color: white;
-    text-shadow: 
-      2px 2px 0 black, 
-      -2px -2px 0 black, 
-      2px -2px 0 black, 
-      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
-}
-
-.cursivo {
-    font-style:italic;
-    color: white;
-    text-shadow: 
-      2px 2px 0 black, 
-      -2px -2px 0 black, 
-      2px -2px 0 black, 
-      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
-}
-
-.cursivo-2 {
-    color: rgb(152, 153, 78);
-    text-shadow: 
-      2px 2px 0 black, 
-      -2px -2px 0 black, 
-      2px -2px 0 black, 
-      -2px 2px 0 black; /* Bordes con sombras para otros navegadores */
-}
-
-.logo {
-    height: 10%;
-    max-width: 100%; /* Esto asegura que la imagen no se estire fuera de su contenedor */
-}
-
-/* Definimos la animación fade-in */
-@keyframes fade-in {
-    from {
-        opacity: 0; /* Inicio con opacidad 0 (invisible) */
-    }
-    to {
-        opacity: 1; /* Final con opacidad 1 (visible) */
-    }
-}
-
-/* Clase que aplicará la animación */
-.fade-in {
-    animation: fade-in 1.5s ease-in-out forwards; /* Añadimos forwards para mantener el último estado */
-    opacity: 0; /* Asegura que empiece invisible */
-    animation-duration: 1.5s; /* Puedes incrementar o reducir el tiempo dependiendo del efecto que quieras */
-}
-
-/* Elementos iniciales invisibles */
-.hidden {
-    opacity: 0; /* Empieza invisible */
-}
-
-/* Para pantallas grandes (escritorios o tabletas en modo apaisado) */
-.contenedor {
-    display: grid; /* Usamos grid por ahora para pantallas grandes */
-    grid-template-columns: 1fr 400px; /* La sección principal toma todo el espacio y la derecha tiene un tamaño fijo */
-    gap: 20px;
-    padding: 20px;
-    margin-right: 420px; /* Este valor se ajustará luego en móviles */
-}
-
-/* Para pantallas pequeñas (móviles) */
-@media screen and (max-width: 768px) {
-    /* Cambiamos a flexbox y apilamos los elementos */
-    .contenedor {
-        display: flex;
-        flex-direction: column; /* Apilamos los elementos verticalmente */
-    }
-
-    /* Contenedor de la imagen */
-    .contenedor-imagen {
-        position: relative; /* Cambiamos la posición para que ocupe todo el ancho y esté arriba */
-        width: 100%; /* Que ocupe todo el ancho en pantallas pequeñas */
-        height: auto; /* La altura se ajustará para no romper la relación de aspecto */
-        margin-bottom: 20px; /* Un poco de margen inferior */
-    }
-
-    /* Ajustamos la tarjeta de presentación (contenido) */
-    .contenido {
-        width: 100%; /* El contenido ocupará el 100% del espacio disponible */
-        height: auto; /* La altura debe ajustarse de acuerdo al contenido */
-        padding: 15px; /* Reducimos el padding para el diseño móvil */
-    }
-
-    /* La imagen de los logos y el texto no deben verse demasiado grandes */
-
-    .izquierda {
-        /* Ajustar contenido para que tenga un buen margen en móviles */
-        gap: 15px;
-    }
-
-    /* Ajustamos las secciones dentro de izquierda */
-    .proyectos, .habilidades, .contacto {
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.6); /* Fondo más claro para el contraste */
-    }
-
-    /* Ajuste general para títulos */
-    h2 {
-        font-size: 1.2rem; /* Reducimos el tamaño del texto en móviles */
-    }
-}
-
-@media (max-width: 768px) {
-    .logo {
-        height: 5rem; /* Puedes ajustar el valor como desees para hacerlo más pequeño */
-        width: auto; /* Para que no se deforme el logo */
-    }
-}
-
-
-/* Para dispositivos móviles */
-/* Para dispositivos móviles */
-@media (max-width: 768px) {
-    /* Ajustamos el contenedor principal para que quede centrado */
-    .contenedor {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        width: 100%;
-        margin-top: 50px; /* Ajustamos el margen superior para evitar que se solape con la tarjeta */
-    }
-
-    /* Contenedor de la imagen (tarjeta) */
-    .contenedor-imagen {
-        position: absolute; /* Tarjeta fija en la parte superior */
-        top: 0; /* Arriba de la página */
-        left: 0;
-        width: 100%; /* Ocupa todo el ancho */
-        height: 400px; /* Altura ajustable, que no se vea como un bloque grande */
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
-        z-index: 1; /* Debe estar encima de otras imágenes pero debajo del contenido */
-    }
-
-    /* Imagen de fondo como sombra */
-    .imagen {
-        width: 100%;
-        height: 100%; /* Hace que la imagen de fondo cubra todo */
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        filter: blur(5px);
-        z-index: 0; /* Debe estar debajo de la tarjeta */
-    }
-
-    /* Imagen principal encima de la sombra */
-    .imagen2 {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1; /* Se coloca encima de la imagen sombra */
-        filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.7));
-    }
-
-    /* Contenido de la tarjeta */
-    .contenido {
-        position: absolute;
-        top: 60%; /* Reducimos la distancia top para que el contenido quede centrado */
-        left: 50%;
-        transform: translate(-50%, -50%); /* Asegura que todo el contenido esté centrado */
-        width: 90%;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        z-index: 2;
-    }
-
-    /* Ajustes en los logos dentro de la tarjeta */
-    .logo {
-        height: 6rem; /* Ajustamos la altura de los logos */
-        width: auto; /* Los logos mantienen proporciones correctas */
-    }
-
-    /* Ajustes generales para el resto de contenido debajo de la tarjeta */
-    .contenedor {
-        margin-top: 450px; /* Espacio debajo de la tarjeta */
-    }
-
-    .izquierda {
-        gap: 15px;
-    }
-
-    .proyectos, .habilidades, .contacto {
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.7); /* Fondo oscuro y transparente para contraste */
-        width: 100%;
-        text-align: center;
-        color: #fff;
-    }
-
-    /* Mejorar la visibilidad y ajustes para el texto en dispositivos móviles */
-    h2 {
-        font-size: 1.2rem; /* Reducimos el tamaño de los encabezados */
-    }
-
-    .cursivo {
-        font-style: italic;
-    }
-
-    .cursivo-2 {
-        font-size: 1.1rem;
-    }
-}
-
-/* General para el logo */
-@media (max-width: 768px) {
-    .logo {
-        height: 6rem; /* Ajuste de tamaño para el logo */
-    }
 }
