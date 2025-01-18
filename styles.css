@@ -11,12 +11,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: none;
 }
 
 body {
     font-family: 'ff7', sans-serif;
     background-color: #000;
     color: #fff;
+    
 }
 
 /* --- PARENT CONTAINER --- */
@@ -28,6 +30,11 @@ body {
     grid-row-gap: 2px;
     height: 100vh;
     width: 100%;
+    align-items: stretch;
+    border: none;
+    margin: 0;
+    overflow: hidden;
+
 }
 
 /* --- DIVS DE NAVEGACIÓN --- */
@@ -44,9 +51,9 @@ body {
     text-align: left;
     border: 5px solid #a8a9ad;
     box-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.1), /* Ajusta la sombra para que no sea tan pronunciada */
         inset -2px -2px 4px rgba(255, 255, 255, 0.2),
-        inset 2px 2px 6px rgba(0, 0, 0, 0.6);
+        inset 2px 2px 6px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
 
@@ -89,14 +96,31 @@ h1, .sobre-mi-titulo {
     z-index: 10000; /* Asegúrate de que esté por encima de todo */
 }
 
+/* --- PARENT CONTAINER --- */
+.div3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 10px;  /* Añadimos un pequeño espacio */
+}
+
+
+
 /* --- AJUSTES PARA Z-INDEX --- */
 .div1, .div4, .div5 {
     z-index: 0; /* Mantén el nivel básico */
 }
 
 .div3 {
-    position: relative;
-    z-index: 1; /* Por encima del fondo */
+    display: flex;
+    flex-direction: column;     /* Asegura que los contenedores se apilen de manera vertical */
+    justify-content: flex-start; /* Alinea al principio */
+    align-items: flex-start;     /* Alinea a la izquierda */
+    width: 100%;
+    height: 100%;                /* Ocupa toda la altura disponible */
+    padding-top: 10px;           /* Ajusta el espaciado de la parte superior si es necesario */
 }
 
 .div2 {
@@ -112,7 +136,7 @@ h1, .sobre-mi-titulo {
     width: 300px;
     height: 300px;
     overflow: hidden;
-    margin-top: 3.4%;
+    margin-top: 15.4%;
 }
 
 /* Imagen pixelada por defecto */
@@ -182,6 +206,31 @@ h1, .sobre-mi-titulo {
     font-weight: bold;
 }
 
+/* --- DESCRIPCIÓN SOBRE MÍ --- */
+.sobre-mi-descripcion {
+    font-family: 'ff7', sans-serif;
+    color: white;
+    text-shadow: 
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        2px 2px 4px black,
+        -2px -2px 4px black;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    font-weight: 160;
+    width: 100%; /* Asegura que el texto ocupe el 100% del contenedor */
+    max-width: 30%; /* Limita el máximo del ancho del texto */
+    padding: 10px; /* Espacio interno */
+    box-sizing: border-box; /* Asegura que el padding quede dentro del ancho */
+    overflow-wrap: break-word; /* Evita que el texto se desborde */
+    word-wrap: break-word; /* Compatibilidad para navegadores más antiguos */
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-top: 20px; /* Margen superior */
+    margin-left: 0; /* El texto empieza desde el borde izquierdo */
+    transform: scaleY(1.8) scaleX(1.2); /* Mantén la transformación de escala */
+    transform-origin: top left; /* Ajuste del punto de origen para la transformación */
+}
+
 /* --- SECCIÓN DE CONTENIDOS OCULTOS --- */
 .content-section {
     display: none; /* Esconde por defecto las secciones */
@@ -198,3 +247,79 @@ h1, .sobre-mi-titulo {
 .div3 { grid-area: 1 / 1 / 3 / 5; }
 .div4 { grid-area: 3 / 1 / 4 / 6; }
 .div5 { grid-area: 4 / 1 / 6 / 6; }
+
+/* --- DIV5 --- */
+.div5 {
+    grid-area: 4 / 1 / 6 / 6;
+    display: flex;
+    justify-content: flex-start; /* Alineación horizontal: izquierda */
+    align-items: flex-start; /* Alineación vertical: arriba */
+    padding: 20px; /* Añade padding si lo necesitas */
+}
+
+/* --- Configuración de Bootstrap --- */
+@media (max-width: 768px) {
+    /* En pantallas más pequeñas, la descripción debe ocupar todo el ancho */
+    .sobre-mi-descripcion {
+        width: 100%; 
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+
+.finalfantasy {
+    font-family: 'ff7', sans-serif;
+    color: white;
+    text-shadow: 
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        2px 2px 4px black,
+        -2px -2px 4px black;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    font-weight: 160;
+}
+
+
+
+.logo-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    /* Eliminar margin-left */
+    margin-left: 0;
+}
+
+/* Logo */
+.logo {
+    max-width: 100px;    /* Tamaño máximo del logo */
+    height: auto;
+    object-fit: contain; /* Mantiene la proporción */
+}
+
+/* --- CONTENEDOR .skills --- */
+.skills {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: calc(30% - 20px);  /* Evita que el contenedor sobrepase */
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.skills-list {
+    padding-top: 10px;
+    transform: scaleY(1.3);
+}
+
+.skills .row {
+    margin: 0;  /* Elimina márgenes adicionales */
+    border: none; /* Si se aplica algún borde, elimínalo */
+}
+
+.skills .col-6 {
+    padding: 0;  /* Quita padding interno de las columnas */
+}
+
