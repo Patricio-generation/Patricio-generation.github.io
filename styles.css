@@ -1,3 +1,4 @@
+/* --- FUENTES --- */
 @font-face {
     font-family: 'ff7';
     src: url('font/Reactor7.woff') format('woff');
@@ -5,6 +6,20 @@
     font-style: normal;
 }
 
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ff7', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* --- PARENT CONTAINER --- */
 .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -13,161 +28,161 @@
     grid-row-gap: 2px;
     height: 100vh;
     width: 100%;
-    box-sizing: border-box;
 }
 
-.div1 { grid-area: 1 / 5 / 2 / 6; }
-.div2 { grid-area: 2 / 5 / 3 / 6; }
-.div3 { grid-area: 1 / 1 / 3 / 5; }
-.div4 { grid-area: 3 / 1 / 4 / 6; }
-.div5 { grid-area: 4 / 1 / 6 / 6; }
-
+/* --- DIVS DE NAVEGACIÓN --- */
 .div1, .div2, .div3, .div4, .div5 {
     background: linear-gradient(to bottom, #0000A6, #000133);
     font-family: 'ff7', sans-serif;
 }
 
+/* Estilo base para todos los divs con borde metálico */
 .metal-border {
     position: relative;
     padding: 20px;
     background-color: #1e2430;
     text-align: left;
-
     border: 5px solid #a8a9ad;
     box-shadow: 
         2px 2px 4px rgba(0, 0, 0, 0.8),
         inset -2px -2px 4px rgba(255, 255, 255, 0.2),
         inset 2px 2px 6px rgba(0, 0, 0, 0.6);
-
     border-radius: 5px;
 }
 
-h1 {
+/* --- TÍTULOS --- */
+h1, .sobre-mi-titulo {
     text-shadow: 
-    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
-    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
-    2px 2px 4px black,   /* Agregar mayor grosor */
-    -2px -2px 4px black; /* Sombra invertida */
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        2px 2px 4px black,
+        -2px -2px 4px black;
     font-weight: 160;
     transform: scaleY(1.8) translateX(60px) scaleX(1.2);
-    
 }
 
+.sobre-mi-titulo {
+    color: white;
+    text-shadow: 
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        2px 2px 4px black,
+        -2px -2px 4px black;
+    transform: scaleY(1.8) translateX(210px) scaleX(1.2);
+}
+
+/* --- MAQUINADO DEL CONTENIDO --- */
 .margins {
     position: relative;
     margin-bottom: 50px;
 }
 
-.div3 {
-    position: relative;
-    z-index: 0;  /* Deja que la imagen de la clase .margins esté por encima */
-}
-
-.div2 {
-    z-index: 9999; /* Nivel más alto */
-}
-
 .margins:hover::before {
     content: url('img/ffviicursor.png');
-    position: fixed;  /* Esto lo saca del flujo del documento */
+    position: fixed;  /* Sacar del flujo del documento */
     left: -3.3em;
     top: 75%;
     transform: translateY(-50%) scale(0.24);
     width: 1em;
     height: auto;
 
-  }
+    z-index: 10000; /* Asegúrate de que esté por encima de todo */
+}
 
+/* --- AJUSTES PARA Z-INDEX --- */
+.div1, .div4, .div5 {
+    z-index: 0; /* Mantén el nivel básico */
+}
 
+.div3 {
+    position: relative;
+    z-index: 1; /* Por encima del fondo */
+}
 
-/* Contenedor para manejar la posición de las imágenes */
+.div2 {
+    position: relative;
+    z-index: 2; /* Superior al div3 para elementos interactivos */
+}
+
+/* --- IMÁGENES --- */
+
+/* Contenedor de la imagen pixelada y nítida */
 .image-container {
     position: relative;
     width: 300px;
     height: 300px;
-    overflow: hidden; /* Para asegurarnos de que todo lo que sobresalga se oculte */
+    overflow: hidden;
     margin-top: 3.4%;
 }
 
-/* Definición de las imágenes */
+/* Imagen pixelada por defecto */
 .image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que las imágenes cubran el contenedor */
-    transition: opacity 0.5s ease; /* Transición suave de la opacidad */
+    object-fit: cover;
+    transition: opacity 0.5s ease;
 }
 
-/* Imagen con filtro pixelado */
+/* Filtro pixelado en la imagen */
 .pixelated {
-    filter: pixelate(10px); /* Aplicamos el filtro pixelado */
-    opacity: 1; /* Inicialmente visible */
+    filter: pixelate(10px);
+    opacity: 1;
 }
 
-/* Imagen nítida que aparecerá al pasar el mouse */
+/* Imagen nítida al pasar el ratón */
 .clear {
-    opacity: 0; /* Inicialmente oculta */
+    opacity: 0;
 }
 
-/* Efecto hover */
+/* Efecto hover: imagen nítida al pasar el ratón */
 .image-container:hover .pixelated {
-    opacity: 0; /* Oculta la imagen pixelada cuando se pasa el ratón */
+    opacity: 0;
 }
 
 .image-container:hover .clear {
-    opacity: 1; /* Muestra la imagen nítida cuando se pasa el ratón */
+    opacity: 1;
 }
 
+/* --- CONTENEDOR DE TEXTO --- */
 .text-container {
     position: absolute;
     bottom: -10%;
     text-shadow: 
-    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
-    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
-    2px 2px 4px black,   /* Agregar mayor grosor */
-    -2px -2px 4px black; /* Sombra invertida */
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        2px 2px 4px black,
+        -2px -2px 4px black;
     font-weight: 160;
     right: 67.4%;
     transform: scaleY(2.8) translateX(10px) scaleX(2.2);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
-    align-items: flex-start; /* Asegura que el texto se alinee a la izquierda */
-    margin-left: 20px; /* Distancia entre imagen y texto */
-    height: 100%; /* Asegura que el contenedor de texto tenga la misma altura que la imagen */
-    
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20px;
+    height: 100%;
 }
 
 .text-container h2, .text-container p {
-    margin: 0; /* Elimina el margen */
-    font-size: 1.2rem; /* Ajusta el tamaño de la fuente */
-    color: white;  /* Asegura que el texto sea blanco */
-    line-height: 1.1; /* Reduce la separación entre las líneas */
+    margin: 0;
+    font-size: 1.2rem;
+    color: white;
+    line-height: 1.1;
 }
 
 .text-container .highlight {
-    font-weight: bold;  /* Hace que el texto sea negrita */
-    color: cyan;        /* Da el color cyan */
+    font-weight: bold;
+    color: cyan;
 }
 
 .text-container .gruesa {
     font-weight: bold;
 }
 
-.sobre-mi-titulo {
-    font-family: 'ff7', sans-serif;
-    color: white;
-    text-shadow: 
-    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
-    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
-    2px 2px 4px black,   /* Agregar mayor grosor */
-    -2px -2px 4px black; /* Sombra invertida */
-    font-weight: 160;
-    transform: scaleY(1.8) translateX(210px) scaleX(1.2);
-}
-
+/* --- SECCIÓN DE CONTENIDOS OCULTOS --- */
 .content-section {
     display: none; /* Esconde por defecto las secciones */
 }
@@ -175,3 +190,11 @@ h1 {
 #inicio {
     display: block; /* Muestra "Inicio" por defecto */
 }
+
+/* --- CONFIGURACIÓN DEL GRID --- */
+/* Las siguientes líneas definen qué `div` ocupa cada espacio en la cuadrícula */
+.div1 { grid-area: 1 / 5 / 2 / 6; }
+.div2 { grid-area: 2 / 5 / 3 / 6; }
+.div3 { grid-area: 1 / 1 / 3 / 5; }
+.div4 { grid-area: 3 / 1 / 4 / 6; }
+.div5 { grid-area: 4 / 1 / 6 / 6; }
