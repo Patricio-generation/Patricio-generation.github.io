@@ -1,1 +1,79 @@
+@font-face {
+    font-family: 'ff7';
+    src: url('font/Reactor7.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.34fr 1.2fr 0.3fr repeat(2, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.div1 { grid-area: 1 / 5 / 2 / 6; }
+.div2 { grid-area: 2 / 5 / 3 / 6; }
+.div3 { grid-area: 1 / 1 / 3 / 5; }
+.div4 { grid-area: 3 / 1 / 4 / 6; }
+.div5 { grid-area: 4 / 1 / 6 / 6; }
+
+.div1, .div2, .div3, .div4, .div5 {
+    background: linear-gradient(to bottom, #0000A6, #000133);
+    font-family: 'ff7', sans-serif;
+}
+
+.metal-border {
+    position: relative;
+    padding: 20px;
+    background-color: #1e2430;
+    text-align: left;
+
+    border: 5px solid #a8a9ad;
+    box-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.2),
+        inset 2px 2px 6px rgba(0, 0, 0, 0.6);
+
+    border-radius: 5px;
+}
+
+h1 {
+    text-shadow: 
+    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
+    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
+    2px 2px 4px black,   /* Agregar mayor grosor */
+    -2px -2px 4px black; /* Sombra invertida */
+    font-weight: 160;
+    transform: scaleY(1.9) translateX(140px) scaleX(1.6);
+    
+}
+
+.margins {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.div3 {
+    position: relative;
+    z-index: 0;  /* Deja que la imagen de la clase .margins esté por encima */
+}
+
+.div2 {
+    z-index: 9999; /* Nivel más alto */
+}
+
+.margins:hover::before {
+    content: url('img/ffviicursor.png');
+    position: fixed;  /* Esto lo saca del flujo del documento */
+    left: -3.7em;
+    top: 75%;
+    transform: translateY(-50%) scale(0.24);
+    width: 1em;
+    height: auto;
+
+  }
