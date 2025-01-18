@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
   <title>Document</title>
 </head>
@@ -14,9 +15,32 @@
         <h1 style="color: white" class="margins"> Proyectos</h1>
         <h1 style="color: white" class="margins"> Contacto</h1>
     </div>
-    <div class="div3 metal-border"> </div>
+    <div class="div3 metal-border">
+        <div class="d-flex align-items-center">
+            <!-- Contenedor de imagen -->
+            <div class="image-container">
+                <!-- Imagen pixelada -->
+                <canvas id="pixi-canvas"></canvas>
+                <!-- Imagen nítida que aparecerá al pasar el mouse -->
+                <img src="img/profile-mini.png" class="image clear">
+            </div>
+            
+            <!-- Contenedor de texto, alineado al lado de la imagen -->
+            <div class="text-container">
+                <h2>Patricio</h2>
+                <p><span class="highlight">LV</span><span class="gruesa"> 28</span></p>
+                <p><span class="highlight">HP</span><span class="gruesa"> 9999/9999</span></p>
+                <p><span class="highlight">MP</span><span class="gruesa"> 999/999</span></p>
+            </div>
+        </div>
+    </div>
+    
     <div class="div4 metal-border"> </div>
     <div class="div5 metal-border"> </div>
   </div>
+
+  <!-- Añadir la referencia de fabric.js -->
+  <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/fabric.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

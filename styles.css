@@ -49,7 +49,7 @@ h1 {
     2px 2px 4px black,   /* Agregar mayor grosor */
     -2px -2px 4px black; /* Sombra invertida */
     font-weight: 160;
-    transform: scaleY(1.9) translateX(140px) scaleX(1.6);
+    transform: scaleY(1.8) translateX(60px) scaleX(1.2);
     
 }
 
@@ -70,10 +70,88 @@ h1 {
 .margins:hover::before {
     content: url('img/ffviicursor.png');
     position: fixed;  /* Esto lo saca del flujo del documento */
-    left: -3.7em;
+    left: -3.3em;
     top: 75%;
     transform: translateY(-50%) scale(0.24);
     width: 1em;
     height: auto;
 
   }
+
+
+
+/* Contenedor para manejar la posición de las imágenes */
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden; /* Para asegurarnos de que todo lo que sobresalga se oculte */
+    margin-top: 3.4%;
+}
+
+/* Definición de las imágenes */
+.image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que las imágenes cubran el contenedor */
+    transition: opacity 0.5s ease; /* Transición suave de la opacidad */
+}
+
+/* Imagen con filtro pixelado */
+.pixelated {
+    filter: pixelate(10px); /* Aplicamos el filtro pixelado */
+    opacity: 1; /* Inicialmente visible */
+}
+
+/* Imagen nítida que aparecerá al pasar el mouse */
+.clear {
+    opacity: 0; /* Inicialmente oculta */
+}
+
+/* Efecto hover */
+.image-container:hover .pixelated {
+    opacity: 0; /* Oculta la imagen pixelada cuando se pasa el ratón */
+}
+
+.image-container:hover .clear {
+    opacity: 1; /* Muestra la imagen nítida cuando se pasa el ratón */
+}
+
+.text-container {
+    position: absolute;
+    bottom: -10%;
+    text-shadow: 
+    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
+    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
+    2px 2px 4px black,   /* Agregar mayor grosor */
+    -2px -2px 4px black; /* Sombra invertida */
+    font-weight: 160;
+    right: 67.4%;
+    transform: scaleY(2.8) translateX(10px) scaleX(2.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+    align-items: flex-start; /* Asegura que el texto se alinee a la izquierda */
+    margin-left: 20px; /* Distancia entre imagen y texto */
+    height: 100%; /* Asegura que el contenedor de texto tenga la misma altura que la imagen */
+    
+}
+
+.text-container h2, .text-container p {
+    margin: 0; /* Elimina el margen */
+    font-size: 1.2rem; /* Ajusta el tamaño de la fuente */
+    color: white;  /* Asegura que el texto sea blanco */
+    line-height: 1.1; /* Reduce la separación entre las líneas */
+}
+
+.text-container .highlight {
+    font-weight: bold;  /* Hace que el texto sea negrita */
+    color: cyan;        /* Da el color cyan */
+}
+
+.text-container .gruesa {
+    font-weight: bold;
+}
