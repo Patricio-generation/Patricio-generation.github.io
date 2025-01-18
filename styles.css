@@ -155,3 +155,23 @@ h1 {
 .text-container .gruesa {
     font-weight: bold;
 }
+
+.sobre-mi-titulo {
+    font-family: 'ff7', sans-serif;
+    color: white;
+    text-shadow: 
+    1px 1px 2px black,   /* Sombra para el borde superior/izquierda */
+    -1px -1px 2px black, /* Sombra para el borde inferior/derecha */
+    2px 2px 4px black,   /* Agregar mayor grosor */
+    -2px -2px 4px black; /* Sombra invertida */
+    font-weight: 160;
+    transform: scaleY(1.8) translateX(210px) scaleX(1.2);
+}
+
+.content-section {
+    display: none; /* Esconde por defecto las secciones */
+}
+
+#inicio {
+    display: block; /* Muestra "Inicio" por defecto */
+}

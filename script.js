@@ -51,3 +51,31 @@ fabric.Image.fromURL('img/profile-mini.png', function(img) {
     });
 
 });
+
+document.getElementById("showInicio").addEventListener("click", function() {
+    showSection("inicio");
+});
+document.getElementById("showProyectos").addEventListener("click", function() {
+    showSection("proyectos");
+});
+document.getElementById("showContacto").addEventListener("click", function() {
+    showSection("contacto");
+});
+
+function showSection(sectionId) {
+    // Esconde todos los div4 y div5
+    const sections4 = document.querySelectorAll(".div4");
+    const sections5 = document.querySelectorAll(".div5");
+    
+    sections4.forEach(function(section) {
+        section.style.display = "none";
+    });
+    
+    sections5.forEach(function(section) {
+        section.style.display = "none";
+    });
+
+    // Muestra el par de div4 y div5 correspondiente
+    document.getElementById(sectionId + "-div4").style.display = "block";
+    document.getElementById(sectionId + "-div5").style.display = "block";
+}
